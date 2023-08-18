@@ -21,7 +21,7 @@ class AnimalTypeController extends Controller
      */
     public function create()
     {
-        $animaltypes = AnimalType::get();
+        $animaltype = AnimalType::get();
         return view('animalstype.create', ['animaltype'=>$animaltype]);
     }
 
@@ -34,7 +34,7 @@ class AnimalTypeController extends Controller
             'name'
         ]);
         AnimalType::create($data);
-        return redirect()->route('animalstype.index')->with("message", "animalstype created successfully");
+        return redirect()->route('animaltype.index')->with("message", "animalstype created successfully");
     }
 
     /**
@@ -52,7 +52,7 @@ class AnimalTypeController extends Controller
     {
         $animaltype= AnimalType::find($id);
 
-        return view('animalstype.edit', ['animalstype'=>$animalstype]);
+        return view('animaltype.edit', ['animalstype'=>$animaltype]);
     }
 
     /**
@@ -64,7 +64,7 @@ class AnimalTypeController extends Controller
             'name'
         ]);
         $animaltype= AnimalType::find($id);
-         $animalstype->update($data);
+         $animaltype->update($data);
 
          return back()->with("message", "animalstype has updated");
     }
@@ -75,7 +75,7 @@ class AnimalTypeController extends Controller
     public function destroy(string $id)
     {
         $animaltype= AnimalType::find($id);
-        $animalstype->delete();
+        $animaltype->delete();
 
         return back()->with("message", "animalstyp is deleted");
     }

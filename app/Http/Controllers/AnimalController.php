@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Animal;
+use App\Models\AnimalType;
 use Illuminate\Http\Request;
 
 class AnimalController extends Controller
@@ -12,11 +13,11 @@ class AnimalController extends Controller
     public function index()
     {
 
-        if(requst('search')){
+        if(request('search')){
             $search = request('search');
-            $animals = Animal::where(function($query) use ($serch){
+            $animals = Animal::where(function($query) use ($search){
                 $query->where('name', 'like', "%{$search}%");
-            })->where('user_id',Auth::user()->id)->paginate(5);
+            });
         } else{
             $animals =Animal::paginate(5);
 
@@ -31,8 +32,8 @@ class AnimalController extends Controller
      */
     public function create()
     {
-        $animal = Animal::get();
-        return view('animals.create', ['animal'=>$animal]);
+        $animals = AnimalType::get();
+        return view('animals.create', ['animal'=>$animals]);
     }
 
     /**
@@ -67,7 +68,7 @@ class AnimalController extends Controller
     {
         $animal= Animal::find($id);
 
-        return view('animals.edit', ['animals'=>$animals]);
+        return view('animals.edit', ['animals'=>$animal]);
     }
 
     /**
