@@ -27,18 +27,17 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/animals',[AnimalController::class, 'index'])->name('animals.index');
+    Route::get('/',[AnimalController::class, 'index'])->name('animals.index');
     Route::post('/animals',[AnimalController::class, 'store'])->name('animals.store');
     Route::get('/animals/edit/{animal}',[AnimalController::class, 'edit'])->name('animals.edit');
     Route::patch('/animals/{animal}',[AnimalController::class, 'update'])->name('animals.update');
     Route::delete('/animals/{animal}',[AnimalController::class, 'destroy'])->name('animals.destroy');
 
-    Route::get('/animaltype',[AnimalTypeController::class , 'index'])->name('animaltype.index');
+    Route::get('/',[AnimalTypeController::class , 'index'])->name('animaltype.index');
     Route::post('/animaltype', [AnimalTypeController::class , 'store'])->name('animaltype.story');
     Route::get('/animaltype/edit/{animaltype}', [AnimalTypeController::class , 'edit'])->name('animaltype.edit');
     Route::patch('/animaltype/{animaltype}' , [AnimalTypeController::class , 'update'])->name('animaltype.update');
     Route::delete('/animaltype/{animaltype}', [AnimalTypeController::class , "destroy"])->name('animaltype.destroy');
 
 });
-
 require __DIR__.'/auth.php';

@@ -13,4 +13,10 @@ class Animal extends Model
         'birthday',
         'description'
     ];
+
+    public function Animalstype(){
+
+        return $this->belongsTo(AnimalType::class);
+    }
+ 
 }
